@@ -3,10 +3,16 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SanphamComponent } from './sanpham/sanpham.component';
+import { DautrangComponent } from './dautrang/dautrang.component';
+import { CuoitrangComponent } from './cuoitrang/cuoitrang.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SanphamComponent,
+    DautrangComponent,
+    CuoitrangComponent
   ],
   imports: [
     BrowserModule,

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "QLcuahangdogonoithat"
+    }
+  },
+  "defaultProject": "QLcuahangdogonoithat",
+  "cli": {
+    "analytics": "3428987d-0d70-413e-b326-efe5a4a8fae0"
+  }
 }
