@@ -1,0 +1,90 @@
+<div class="content-wrapper">
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Quản Lý Loại Sản Phẩm</h3>
+                    </div>
+                    <?php 
+        $message = Session::get('tb');
+        if($message){
+            echo '<div class="alert alert-success alert-dismissible" id="tbao" role="alert"><i class="fa fa-check-circle"></i>'." $message".'</div>';
+            Session::put('tb',null);
+        }   ?>
+                    <button class="btn btn-primary" onclick="ThemLoaiSP()">Thêm Loại Sản Phẩm</button>
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Mã Loại Sản Phẩm</th>
+                                    <th>Tên Loại Sản Phẩm </th>
+                                    <th>Mô Tả</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ( $loai as $value)
+                                {
+                                    ?>
+                                    <tr>
+                                        <td>{{$value->id}}</td>
+                                        <td>{{$value->tenloai}}</td>
+                                        <td>{{$value->mota}}</td>
+                                        <td><a class="btn btn-success" href="{{URL::to('capnhatloai/'.$value->id)}}" ><i class="glyphicon glyphicon-pencil"></i></a></td>
+                                        <td><a class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa không?');" href="/xoaloai/{{$value->id}}"><i class="glyphicon glyphicon-trash"></i></a></td>
+                                    </tr>
+                                    <?php 
+                                }
+                                    ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="titlesua">Thêm Loại Sản Phẩm</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="demo-form2" method="post" enctype="multipart/form-data" action="{{URL::to('/themloai')}}" data-parsley-validate class="form-horizontal form-label-left">
+                    <input type="hidden" id="aoe" name="aoe" value="0" />
+                    @csrf()
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                            Tên Loại Sản Phẩm <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="tenloai" name="tenloai" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Mô Tả
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="mota" name="mota" class="date-picker form-control col-md-7 col-xs-12"  type="text">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button type="submit" class="btn btn-success">Lưu</button>
+                            <button class="btn btn-primary" type="reset">Làm mới</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

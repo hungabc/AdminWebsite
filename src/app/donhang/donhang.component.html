@@ -1,0 +1,117 @@
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Danh sách đơn hàng
+        </h1>
+    </section>
+    <section class="invoice">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-globe"></i> Website Đồ Gỗ Nội Thất!
+                    <small class="pull-right">Update Phiên bản:New</small>
+                </h2>
+            </div>
+        </div>
+        <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+                Thông tin website:
+                <address>
+                    <strong>Đồ Gỗ Nội Thất</strong><br>
+                    Phone: 0979-349-831<br>
+                    Email: Websitedogonoithat@gmail.com
+                </address>
+            </div>
+            <div class="col-sm-4 invoice-col">
+                <address>
+                    <strong>Công ty đồ gỗ nội thất:</strong><br>
+                    CNC Interior: Quận Bình Thạnh, Tp. Hồ Chí Minh<br>
+                    Gỗ Việt     : Phường Tân Thới Hòa, Quận Tân Phú, TP.HCM<br>
+                    WOODPRO     : Thị Trấn Đông Anh, Đông Anh, Hà Nội<br>
+                    2N FURNITURE: P. Biên Hòa, Đồng Nai<br>
+                </address>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Khách hàng</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>Tổng giá trị</th>
+                            <th>Trạng thái</th>
+                            <th><i class="glyphicon glyphicon-pencil"></i></th>
+                            <th>Hủy đơn</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php $i=1;foreach ($dh as $value)//hdb o controller
+                        {
+                            ?>
+                        <tr>
+                        <td>{{$i++}}</td>
+                            <td>{{$value->id}}</td>
+                            <td>{{$value->tenkh}}</td>
+                            <td>{{date('d-m-Y',strtotime($value->ngaydat))}}</td>
+                            <td>{{number_format(DB::table('tblchitiethdb')->where('idhdb',$value->id)->sum('thanhtien'))}} VNĐ</td>
+                            <!-- giống câu select sum thanhtien on tblchitiethdb where idhdb=value->id, tính tổng thành tiền các chi tiết hdb có cùng mã là value->id -->
+                            <td>{{$value->trangthai}}</td>
+                            <td>
+                            @switch($value->trangthai)
+                            @case('chưa xác nhận')
+                            <a  class="btn btn-primary" onclick="return confirm('chuyển trạng thái thành đã xác nhận?')" href="{{URL::to('thaydoitrangthai/'.$value->id)}}">Xác nhận</a>
+                            @break
+                            @case('đã xác nhận')
+                            <a  class="btn btn-primary" onclick="return confirm('chuyển trạng thái thành đã đóng gói?')" href="{{URL::to('thaydoitrangthai/'.$value->id)}}">Đóng gói</a>
+                            @break
+                            @case('đã đóng gói')
+                            <a  class="btn btn-primary" onclick="return confirm('chuyển trạng thái thành đang giao hàng?')" href="{{URL::to('thaydoitrangthai/'.$value->id)}}">Giao hàng</a>
+                            @break
+                            @case('đang giao hàng')
+                            <a  class="btn btn-primary" onclick="return confirm('chuyển trạng thái thành đã thanh toán?')" href="{{URL::to('thaydoitrangthai/'.$value->id)}}">Thanh toán</a>
+                            @break
+                            @case('đã thanh toán')
+                            <span>Đã hoàn tất</span>
+                            @break
+                            @case('đã hủy đơn')
+                            <span>Đã hủy đơn</span>
+                            @break
+                            @default
+                            @break
+                            @endswitch
+                            </td>
+                            <td>
+                            @if($value->trangthai=='chưa xác nhận'||$value->trangthai=='đã đóng gói'||$value->trangthai=='đã xác nhận')
+                            <a  class="btn btn-danger" onclick="return confirm('hủy đơn hàng này?')" href="{{URL::to('huydon/'.$value->id)}}">Hủy</a>
+                            @elseif($value->trangthai=='đã thanh toán')
+                            <span>không thể hủy</span>
+                            @endif
+                            </td>
+                            <td><a class="btn btn-success" href="{{URL::to('donhang/'.$value->id)}}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                        </tr>
+                        <?php 
+                        }
+                            ?>
+                    </tbody>
+                </table>
+            </div>
+        <div class="row no-print">
+            <div class="col-xs-12">
+            <button target="_blank" onclick="window.print()" class="btn btn-default"><i class="fa fa-print"></i> In hóa đơn</button>
+                <button type="button" class="btn btn-success pull-right">
+                    <i class="fa fa-credit-card"></i> Gửi thanh toán
+                </button>
+                <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                    <i class="fa fa-download"></i> Tạo PDF
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+</div>
+</div>
+</div>
