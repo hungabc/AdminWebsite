@@ -13,6 +13,7 @@ import { NccComponent } from './ncc/ncc.component';
 import { DonhangComponent } from './donhang/donhang.component';
 import { ChitietdonhangComponent } from './donhang/chitietdonhang/chitietdonhang.component';
 import { ChitiethoadonbanComponent } from './hoadonban/chitiethoadonban/chitiethoadonban.component';
+import { GiaodiensuaComponent } from './sanpham/giaodiensua/giaodiensua.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ChitiethoadonbanComponent } from './hoadonban/chitiethoadonban/chitieth
     NccComponent,
     DonhangComponent,
     ChitietdonhangComponent,
-    ChitiethoadonbanComponent
+    ChitiethoadonbanComponent,
+    GiaodiensuaComponent
   ],
   imports: [
     BrowserModule,
