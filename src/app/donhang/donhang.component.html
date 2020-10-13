@@ -49,7 +49,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php $i=1;foreach ($dh as $value)//hdb o controller
+                    <!--?php $i=1;foreach ($dh as $value)//hdb o controller
                         {
                             ?>
                         <tr>
@@ -59,7 +59,7 @@
                             <td>{{date('d-m-Y',strtotime($value->ngaydat))}}</td>
                             <td>{{number_format(DB::table('tblchitiethdb')->where('idhdb',$value->id)->sum('thanhtien'))}} VNĐ</td>
                             <!-- giống câu select sum thanhtien on tblchitiethdb where idhdb=value->id, tính tổng thành tiền các chi tiết hdb có cùng mã là value->id -->
-                            <td>{{$value->trangthai}}</td>
+                            <!--td>{{$value->trangthai}}</td>
                             <td>
                             @switch($value->trangthai)
                             @case('chưa xác nhận')
@@ -95,7 +95,7 @@
                         </tr>
                         <?php 
                         }
-                            ?>
+                            ?-->
                     </tbody>
                 </table>
             </div>

@@ -45,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($hdb as $value)//hdb o controller
+                    <!--?php foreach ($hdb as $value)//hdb o controller
                         {
                             ?>
                         <tr>
@@ -53,14 +53,14 @@
                             <td>{{$value->iddonhang}}</td>
                              <td>{{date('d-m-Y',strtotime($value->ngaylap))}}</td>
                               <!--d:day m:month Y:Year -->
-                              <td>{{number_format(DB::table('tblchitiethdb')->where('idhdb',$value->id)->sum('thanhtien'))}} VNĐ</td>
-                            <td><a class="btn btn-success" href="{{URL::to('hoadonban/'.$value->id)}}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                              <!--td>{{number_format(DB::table('tblchitiethdb')->where('idhdb',$value->id)->sum('thanhtien'))}} VNĐ</td>
+                            <!--td><a class="btn btn-success" href="{{URL::to('hoadonban/'.$value->id)}}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
                         </tr>
                         <?php 
                         }
                             ?>
                     </tbody>
-                </table>
+                </table-->
             </div>
         <div class="row no-print">
             <div class="col-xs-12">

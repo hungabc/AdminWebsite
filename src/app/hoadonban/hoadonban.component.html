@@ -1,1 +1,80 @@
-<p>hoadonban works!</p>
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Hóa Đơn Bán
+        </h1>
+    </section>
+    <section class="invoice">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="page-header">
+                    <i class="fa fa-globe"></i> Website Đồ Gỗ Nội Thất!
+                    <small class="pull-right">Update Phiên bản:New</small>
+                </h2>
+            </div>
+        </div>
+        <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+                Thông tin website:
+                <address>
+                    <strong>Đồ Gỗ Nội Thất</strong><br>
+                    Phone: 0979-349-831<br>
+                    Email: Websitedogonoithat@gmail.com
+                </address>
+            </div>
+            <div class="col-sm-4 invoice-col">
+                <address>
+                    <strong>Công ty đồ gỗ nội thất:</strong><br>
+                    CNC Interior: Quận Bình Thạnh, Tp. Hồ Chí Minh<br>
+                    Gỗ Việt     : Phường Tân Thới Hòa, Quận Tân Phú, TP.HCM<br>
+                    WOODPRO     : Thị Trấn Đông Anh, Đông Anh, Hà Nội<br>
+                    2N FURNITURE: P. Biên Hòa, Đồng Nai<br>
+                </address>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Mã hóa đơn bán</th>
+                            <th>Mã đơn hàng</th>
+                            <th>Ngày lập</th>
+                            <th>tổng giá trị</th>
+                            <th>Xem chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <!--?php foreach ($hdb as $value)//hdb o controller
+                        {
+                            ?>
+                        <tr>
+                            <td>{{$value->id}}</td>
+                            <td>{{$value->iddonhang}}</td>
+                             <td>{{date('d-m-Y',strtotime($value->ngaylap))}}</td>
+                              <!--d:day m:month Y:Year -->
+                              <!--td>{{number_format(DB::table('tblchitiethdb')->where('idhdb',$value->id)->sum('thanhtien'))}} VNĐ</td>
+                            <!--td><a class="btn btn-success" href="{{URL::to('hoadonban/'.$value->id)}}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                        </tr>
+                        <?php 
+                        }
+                            ?>
+                    </tbody>
+                </table-->
+            </div>
+        <div class="row no-print">
+            <div class="col-xs-12">
+            <button target="_blank" onclick="window.print()" class="btn btn-default"><i class="fa fa-print"></i> In hóa đơn</button>
+                <button type="button" class="btn btn-success pull-right">
+                    <i class="fa fa-credit-card"></i> Gửi thanh toán
+                </button>
+                <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
+                    <i class="fa fa-download"></i> Tạo PDF
+                </button>
+            </div>
+        </div>
+    </section>
+    <div class="clearfix"></div>
+</div>
+</div>
+</div>
