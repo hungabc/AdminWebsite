@@ -49,16 +49,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <!--?php $i=1;foreach ($dh as $value)//hdb o controller
-                        {
-                            ?>
                         <tr>
-                        <td>{{$i++}}</td>
-                            <td>{{$value->id}}</td>
-                            <td>{{$value->tenkh}}</td>
-                            <td>{{date('d-m-Y',strtotime($value->ngaydat))}}</td>
-                            <td>{{number_format(DB::table('tblchitiethdb')->where('idhdb',$value->id)->sum('thanhtien'))}} VNĐ</td>
-                            <!-- giống câu select sum thanhtien on tblchitiethdb where idhdb=value->id, tính tổng thành tiền các chi tiết hdb có cùng mã là value->id -->
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                             <!--td>{{$value->trangthai}}</td>
                             <td>
                             @switch($value->trangthai)
@@ -91,14 +87,11 @@
                             <span>không thể hủy</span>
                             @endif
                             </td>
-                            <td><a class="btn btn-success" href="{{URL::to('donhang/'.$value->id)}}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
-                        </tr>
-                        <?php 
-                        }
-                            ?-->
+                            <td><a class="btn btn-success" href="{{URL::to('donhang/'.$value->id)}}"><i class="glyphicon glyphicon-eye-open"></i></a></td-->
                     </tbody>
                 </table>
             </div>
+        </div>
         <div class="row no-print">
             <div class="col-xs-12">
             <button target="_blank" onclick="window.print()" class="btn btn-default"><i class="fa fa-print"></i> In hóa đơn</button>
@@ -112,6 +105,4 @@
         </div>
     </section>
     <div class="clearfix"></div>
-</div>
-</div>
 </div>

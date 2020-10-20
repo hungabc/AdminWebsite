@@ -32,26 +32,35 @@
                 </address>
             </div>
         </div>
+                            <!--?php $i=1;
+                    $ct=DB::table('tblchitiethdb')->join('tblsanpham','tblchitiethdb.idsp','=','tblsanpham.id')->select('tblchitiethdb.*','tblsanpham.tensp')->where('tblchitiethdb.idhdb',$value->id)->get();
+                    foreach ($ct as $value2)//hdb o controller
+                        {
+                            ?-->
         <div class="row invoice-info">
-            <!--div class="col-sm-4 invoice-col">
-              <table class='table'>
-              <tr>
-              <td>Mã đơn hàng:</td>
-              <td>{{$value->id}}</td>
-              </tr>
-              <tr>
-              <td>Tên khách hàng:</td>
-              <td>{{$value->tenkh}}</td>
-              </tr>
-              <tr>
-              <td>Ngày đặt:</td>
-              <td>{{date('d-m-Y',strtotime($value->ngaydat))}}</td>
-              </tr>
-              <tr>
-              <td>Trạng thái:</td>
-              <td>{{$value->trangthai}}</td>
-              </tr>
-              </table>
+            <div class="col-sm-4 invoice-col">
+                <table class='table'>
+                    <!--?php $i=1;
+                    $ct=DB::table('tblchitiethdb')->join('tblsanpham','tblchitiethdb.idsp','=','tblsanpham.id')->select('tblchitiethdb.*','tblsanpham.tensp')->where('tblchitiethdb.idhdb',$value->id)->get();
+                    foreach ($ct as $value2)//hdb o controller
+                    {?-->
+                    <tr>
+                    <td>Mã đơn hàng:</td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                    <td>Tên khách hàng:</td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                    <td>Ngày đặt:</td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                    <td>Trạng thái:</td>
+                    <td></td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="row">
@@ -59,35 +68,33 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                        <th>#</th>
-                            <th>Mã chi tiết</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Số lượng </th>
-                            <th>Đơn giá</th>
-                            <th>Thành tiền</th>
+                        <th></th>
+                        <th>Mã chi tiết</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng </th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php $i=1;
+                    <!--?php $i=1;
                     $ct=DB::table('tblchitiethdb')->join('tblsanpham','tblchitiethdb.idsp','=','tblsanpham.id')->select('tblchitiethdb.*','tblsanpham.tensp')->where('tblchitiethdb.idhdb',$value->id)->get();
                     foreach ($ct as $value2)//hdb o controller
                         {
-                            ?>
+                            ?-->
                         <tr>
-                        <td>{{$i++}}</td>
-                            <td>{{$value2->id}}</td>
-                            <td>{{$value2->tensp}}</td>
-                            <td>{{$value2->sl}}</td>
-                            <td>{{number_format($value2->dongia)}} VNĐ</td>
-                            <td>{{number_format($value2->thanhtien)}} VNĐ</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
-                        <?php 
-                        }
-                            ?>
-                            <tr><td colspan='5'> Tổng tiền hàng: <b>{{number_format($ct->sum('thanhtien'))}} VNĐ</b></td></tr>
+                        <tr><td colspan='5'> Tổng tiền hàng: <b></b></td></tr>
                     </tbody>
-                </table-->
+                </table>
             </div>
+        </div>
         <div class="row no-print">
             <div class="col-xs-12">
             <button target="_blank" onclick="window.print()" class="btn btn-default"><i class="fa fa-print"></i> In hóa đơn</button>
@@ -101,6 +108,4 @@
         </div>
     </section>
     <div class="clearfix"></div>
-</div>
-</div>
 </div>

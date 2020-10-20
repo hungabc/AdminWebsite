@@ -45,23 +45,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <!--?php foreach ($hdb as $value)//hdb o controller
-                        {
-                            ?>
                         <tr>
-                            <td>{{$value->id}}</td>
-                            <td>{{$value->iddonhang}}</td>
-                             <td>{{date('d-m-Y',strtotime($value->ngaylap))}}</td>
-                              <!--d:day m:month Y:Year -->
-                              <!--td>{{number_format(DB::table('tblchitiethdb')->where('idhdb',$value->id)->sum('thanhtien'))}} VNĐ</td>
-                            <!--td><a class="btn btn-success" href="{{URL::to('hoadonban/'.$value->id)}}"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a class="btn btn-success" href=""><i class="glyphicon glyphicon-eye-open"></i></a></td>
                         </tr>
-                        <?php 
-                        }
-                            ?>
                     </tbody>
-                </table-->
+                </table>
             </div>
+        </div>
         <div class="row no-print">
             <div class="col-xs-12">
             <button target="_blank" onclick="window.print()" class="btn btn-default"><i class="fa fa-print"></i> In hóa đơn</button>
@@ -75,6 +70,4 @@
         </div>
     </section>
     <div class="clearfix"></div>
-</div>
-</div>
 </div>
