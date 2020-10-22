@@ -13,6 +13,11 @@ import { DonhangComponent } from './donhang/donhang.component';
 import { ChitietdonhangComponent } from './donhang/chitietdonhang/chitietdonhang.component';
 import { ChitiethoadonbanComponent } from './hoadonban/chitiethoadonban/chitiethoadonban.component';
 import { GiaodiensuaComponent } from './sanpham/giaodiensua/giaodiensua.component';
+import { JwtInterceptor } from './lib/jwt.interceptor'; 
+import { ErrorInterceptor } from './lib/error.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -27,13 +32,17 @@ import { GiaodiensuaComponent } from './sanpham/giaodiensua/giaodiensua.componen
     DonhangComponent,
     ChitietdonhangComponent,
     ChitiethoadonbanComponent,
-    GiaodiensuaComponent
+    GiaodiensuaComponent,
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
