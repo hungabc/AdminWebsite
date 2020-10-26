@@ -1,9 +1,10 @@
-import { MustMatch } from '../../../helpers/must-match.validator';
+
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { FileUpload } from 'primeng/fileupload';
 import { FormBuilder, Validators} from '@angular/forms';
-import { BaseComponent } from '../../../lib/base-component';
 import 'rxjs/add/operator/takeUntil';
+import { BaseComponent } from 'src/app/lib/base-component';
+import { MustMatch } from 'src/app/helpers/must-match.validator';
 declare var $: any;
 @Component({
   selector: 'app-user',

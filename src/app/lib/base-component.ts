@@ -3,9 +3,10 @@ import { map } from 'rxjs/operators';
 import { FileUpload } from 'primeng/fileupload';
 import { ApiService } from '../lib/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { Injector } from '@angular/core';
+import { Injector, Renderer2 } from '@angular/core';
 export class BaseComponent {
    public genders: any;
+   renderer:any;
    public roles: any;
    public locale_vn:any;
    public today: any;
@@ -13,7 +14,8 @@ export class BaseComponent {
    public unsubscribe = new Subject();
    public _api: ApiService;
    public _route: ActivatedRoute;
-   constructor(injector: Injector) { 
+   constructor(injector: Injector) {
+    this.renderer = injector.get(Renderer2); 
           this.today = new Date();
           this.dateFormat = "dd/mm/yy";
           this.genders =  [
@@ -108,5 +110,24 @@ export class BaseComponent {
         } else {
           return observableOf(null);
         }
+      }
+      public loadScripts() {
+        this.renderExternalScript('assets/js/themsuaxoa.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/dist/js/adminlte.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/dist/js/pages/dashboard.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/dist/js/demo.js').onload = () => {
+        }
+      }
+      public renderExternalScript(src: string): HTMLScriptElement {
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        script.async = true;
+        script.defer = true;
+        this.renderer.appendChild(document.body, script);
+        return script;
       }
 }

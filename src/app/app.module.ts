@@ -17,12 +17,13 @@ import { JwtInterceptor } from './lib/jwt.interceptor';
 import { ErrorInterceptor } from './lib/error.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SanphamComponent,
+    
     DautrangComponent,
     CuoitrangComponent,
     LoaisanphamComponent,
@@ -32,12 +33,13 @@ import { HttpClientModule } from '@angular/common/http';
     DonhangComponent,
     ChitietdonhangComponent,
     ChitiethoadonbanComponent,
-    GiaodiensuaComponent,
-    HttpClientModule
+    
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,HttpClientModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

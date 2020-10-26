@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../lib/authentication.service';
+import { AuthenticationService } from '../lib/authentication.service';
+
 
 @Component({
   selector: 'app-file-not-found',
