@@ -44,6 +44,7 @@
                             <th>Trạng thái</th>
                             <th><i class="glyphicon glyphicon-pencil"></i></th>
                             <th>Chi tiết</th> <th>Hủy đơn</th>
+                            <th>Tình Trạng</th> <th>Hủy đơn</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,10 +62,9 @@
                          <td *ngIf="dh.tinhtrang=='đã thanh toán'">Hoàn tất</td>
                          <td *ngIf="dh.tinhtrang=='đã hủy đơn'">X</td>
                          <td><a class="btn btn-primary">Xem</a></td>
-                         
                          <td *ngIf="dh.tinhtrang!='đã thanh toán'||dh.tinhtrang!='đã hủy đơn'; else canceled"><a class="btn btn-success" (click)="huydon(dh.madh)">Hủy đơn</a></td>
                          <ng-container  #canceled>
-                         <td> không thể hủy</td>
+                         <td>không thể hủy</td>
                    </ng-container>
                         </tr>
                     </tbody>
