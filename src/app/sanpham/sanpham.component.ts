@@ -5,12 +5,14 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/operator/takeUntil';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FileUpload } from 'primeng/fileupload';
+import { HttpHeaders } from '@angular/common/http';
 declare var $:any;
 @Component({
   selector: 'app-sanpham',
   templateUrl: './sanpham.component.html',
   styleUrls: ['./sanpham.component.css']
 })
+
 export class SanphamComponent extends BaseComponent implements OnInit{
 page:any;
 pageSize:any;
@@ -33,13 +35,13 @@ submitted = false;
   ngOnInit(): void {
     this.allloai=[];
     this.page=1;
-    this.pageSize=10;
+    this.pageSize=4;
   this.totalItems=0;
     this._route.params.subscribe(params => {
-      this._api.get('/api/SanPham/get-all').takeUntil(this.unsubscribe).subscribe(res => {
-        this.list = res;
-      
-        this.totalItems = res;
+      this._api.post('/api/SanPham/sp-phan-trang', { page: this.page, pageSize: this.pageSize}).takeUntil(this.unsubscribe).subscribe(res => {
+        this.list = res.data;
+      console.log(this.list);
+        this.totalItems = res.totalItems;
         }, err => { });       
    }); 
    this._api.get('/api/Loaisp/get-all').takeUntil(this.unsubscribe).subscribe(res => {
@@ -48,8 +50,8 @@ submitted = false;
   }
   loadPage(page) { 
     this._route.params.subscribe(params => {
-      let id = params['id'];
-      this._api.post('/api/SanPham/sp-phan-trang', { page: page, pageSize: this.pageSize, MALOAI: id}).takeUntil(this.unsubscribe).subscribe(res => {
+ 
+      this._api.post('/api/SanPham/sp-phan-trang', { page: page, pageSize: this.pageSize}).takeUntil(this.unsubscribe).subscribe(res => {
         this.list = res.data;
         this.totalItems = res.totalItems;
         }, err => { });       
@@ -78,6 +80,7 @@ submitted = false;
             maloai:value.maloai        
           };
         this._api.post('/api/SanPham/them-SP',tmp).takeUntil(this.unsubscribe).subscribe(res => {
+          console.log(res);
           alert('Thêm thành công');
           this.closeModal();
           });
@@ -108,9 +111,9 @@ submitted = false;
   } 
 
   onDelete(row) { 
-    this._api.post('/api/SanPham/xoa-SP',{user_id:row.masp}).takeUntil(this.unsubscribe).subscribe(res => {
+    this._api.get('/api/SanPham/delete-SP/'+row.masp).takeUntil(this.unsubscribe).subscribe(res => {
       alert('Xóa thành công');
-
+      this.loadPage(1);
       });
   }
 

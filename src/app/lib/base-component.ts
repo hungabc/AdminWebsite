@@ -114,6 +114,36 @@ export class BaseComponent {
       public loadScripts() {
         this.renderExternalScript('assets/js/themsuaxoa.js').onload = () => {
         }
+        this.renderExternalScript('assets/Admin/bower_components/jquery/dist/jquery.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/jquery-ui/jquery-ui.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/bootstrap/dist/js/bootstrap.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/raphael/raphael.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/morris.js/morris.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/jvectormap/jquery-jvectormap-1.2.2.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/jvectormap/jquery-jvectormap-world-mill-en.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/jquery-knob/dist/jquery.knob.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/moment/min/moment.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/bootstrap-daterangepicker/daterangepicker.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js').onload = () => {
+        }
+        this.renderExternalScript('assets/Admin/bower_components/fastclick/lib/fastclick.js').onload = () => {
+        }
         this.renderExternalScript('assets/Admin/dist/js/adminlte.min.js').onload = () => {
         }
         this.renderExternalScript('assets/Admin/dist/js/pages/dashboard.js').onload = () => {

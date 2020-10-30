@@ -11,7 +11,6 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    
                                     <th>Mã</th>
                                     <th>Loại</th>
                                     <th>Tên </th>
@@ -34,11 +33,14 @@
                                         <td ><span style="float:right" >{{spp.soluongton}}</span></td>
                                         <td><span style="float:right" >{{spp.gia | currency:'VND'}}</span></td>
                                         <td><a class="btn btn-success" ><i class="glyphicon glyphicon-pencil"></i></a></td>
-                                        <td><a class="btn btn-danger" ><i class="glyphicon glyphicon-trash"></i></a></td>
+                                        <td><a class="btn btn-danger" (click)="onDelete(spp)" ><i class="glyphicon glyphicon-trash"></i></a></td>
                                     </tr>
                                 </ng-container>
                             </tbody>
                         </table>
+                        <div class="col-xs-12" style="text-align: right;">
+                          <ngb-pagination [collectionSize]="totalItems" [pageSize]="pageSize" [(page)]="page" [maxSize]="10" [rotate]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -223,14 +225,25 @@ masp:value.masp,
                     <table class="table">
                         <tbody>
                             <tr>
-                                <td> <label  class=" control-label"> Mã code:</label><input type="text" formControlName="macode" placeholder="mã code" class="form-control" ></td>
-                                <td><label  class=" control-label"> Tên sản phẩm:</label><input type="text"  class="form-control"></td>
+                                <td> <label  class=" control-label"> Mã code:</label><input type="text" formControlName="macode" placeholder="mã code" class="form-control" >
+                                  <div *ngIf="submitted && f.macode.errors" class="invalid-feedback">
+                                    <div *ngIf="f.macode.errors.required">mã code là bắt buộc</div>
+                                  </div>
+                                </td>
+                                <td><label  class=" control-label"> Tên sản phẩm:</label><input type="text" formControlName="tensp"  class="form-control">
+                                  <div *ngIf="submitted && f.tensp.errors" class="invalid-feedback">
+                                    <div *ngIf="f.tensp.errors.required">tên sản phẩm là bắt buộc</div>
+                                  </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td><label  class=" control-label"> Loại:</label>
                                 <select formControlName="maloai" class="form-control">
                                     <option *ngFor="let l of allloai" value="{{l.maloai}}">{{l.tenloai}}</option>
                                 </select>
+                                <div *ngIf="submitted && f.maloai.errors" class="invalid-feedback">
+                                  <div *ngIf="f.maloai.errors.required">loại chưa được chọn</div>
+                                </div>
                                 </td>
                                 <td><label  class=" control-label"> Mã Giảm Giá:</label><input type="text" formControlName="magiamgia" class="form-control"></td>
                             </tr>
@@ -253,7 +266,7 @@ masp:value.masp,
                                 <td><label  class=" control-label"> Ngày nhập:</label>
                                     <p-calendar class="form-control" formControlName="ngaynhap" [dateFormat]="dateFormat"  [locale]="locale_vn" [showIcon]="true" inputId="icon"></p-calendar>
                                     <div *ngIf="submitted && f.ngaynhap.errors" class="invalid-feedback">
-                                      <div *ngIf="f.ngaynhap.errors.required">Ngày sinh là bắt buộc</div>
+                                      <div *ngIf="f.ngaynhap.errors.required">Ngày nhập là bắt buộc</div>
                                     </div>
                                     </td>
                                 <td><label  class=" control-label"> Ẩn hiện:</label>
@@ -263,14 +276,21 @@ masp:value.masp,
                                     </select>
                             </tr>
                             <tr>
-                                <td><label  class=" control-label"> Số lượng:</label><input type="text" formControlName="soluong" class="form-control"></td>
-                                <td><label  class=" control-label"> Giá bán:</label><input type="text" formControlName="gia" class="form-control"></td>
+                                <td><label  class=" control-label"> Số lượng:</label><input type="text" formControlName="soluong" class="form-control">
+                                <div *ngIf="submitted && f.soluong.errors" class="invalid-feedback">
+                                      <div *ngIf="f.soluong.errors.required">Ngày nhập là bắt buộc</div>
+                                    </div></td>
+                                
+                                <td><label  class=" control-label"> Giá bán:</label><input type="text" formControlName="gia" class="form-control">
+                                  <div *ngIf="submitted && f.gia.errors" class="invalid-feedback">
+                                    <div *ngIf="f.gia.errors.required">Ngày nhập là bắt buộc</div>
+                                  </div></td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="form-group modal-footer">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-success btn-sm btn-submit">Lưu</button>
+                            <button type="submit" class="btn btn-success btn-sm btn-submit">Lưu</button>
                             <button class="btn btn-primary" type="reset">Làm mới</button>
                         </div>
                     </div>

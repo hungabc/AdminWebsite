@@ -7,6 +7,12 @@ const routes: Routes = [
   {path: '', loadChildren: () => import('./sanpham/Sanpham.module').then((m) => m.SanphamModule)
   // ,canActivate: [AuthGuard]
 },
+{path: 'don-hang', loadChildren: () => import('./donhang/donhang.module').then((m) => m.DonhangModule)
+// ,canActivate: [AuthGuard]
+},
+// {path: 'hoa-don-ban', loadChildren: () => import('./hoadonban/hoadonban.module').then((m) => m.HoadonbanModule)
+// // ,canActivate: [AuthGuard]
+// },
   {
     path: '**',
     component: FileNotFoundComponent,
