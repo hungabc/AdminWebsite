@@ -32,12 +32,11 @@
                 </address>
             </div>
             <div class="col-sm-4 invoice-col">
-                <address *ngFor="let dh of donhangs">
-                    <strong>Thông tin đơn hàng:</strong><br>
-                   Mã đơn hàng:{{dh.madh}}<br>
-                   Tên đơn hàng:{{dh.tenkh}}<br>
-                   Ngày đặt:{{dh.ngaydathang}}<br>
-                </address>
+                <strong>Các đơn hàng hiện tại:</strong><br>
+                <div *ngFor="let dh of donhangs">
+                   Mã:[{{dh.madh}}]<br>
+                   Khách hàng:[{{dh.tenkh}}]<br>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -76,7 +75,7 @@
                          <td><a class="btn btn-primary">Xem</a></td>
                          <ng-container>
                          <td *ngIf="dh.tinhtrang!='đã thanh toán'||dh.tinhtrang!='đã hủy đơn'"><a class="btn btn-success" (click)="huydon(dh.madh)">Hủy đơn</a></td>
-                         <td *ngIf="dh.tinhtrang=='đã thanh toán'||dh.tinhtrang=='đã hủy đơn'">Đã xử lý</td>
+                         <td *ngIf="dh.tinhtrang=='đã thanh toán'||dh.tinhtrang=='đã hủy đơn'">Không thể hủy</td>
                         </ng-container>
                         </tr>
                     </tbody>
