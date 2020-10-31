@@ -10,9 +10,9 @@ const routes: Routes = [
 {path: 'don-hang', loadChildren: () => import('./donhang/donhang.module').then((m) => m.DonhangModule)
 // ,canActivate: [AuthGuard]
 },
-// {path: 'hoa-don-ban', loadChildren: () => import('./hoadonban/hoadonban.module').then((m) => m.HoadonbanModule)
-// // ,canActivate: [AuthGuard]
-// },
+{path: 'hoa-don-ban', loadChildren: () => import('./hoadonban/hoadonban.module').then((m) => m.HoadonbanModule)
+// ,canActivate: [AuthGuard]
+},
   {
     path: '**',
     component: FileNotFoundComponent,
