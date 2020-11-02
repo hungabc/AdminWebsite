@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SanphamComponent } from './sanpham.component';
-import { GiaodiensuaComponent } from './giaodiensua/giaodiensua.component';
 import { SharedModule } from '../shared/shared.module';
 import { UnauthorizedComponent } from '../unauthorized/unauthorized.component';
 import { FileNotFoundComponent } from '../file-not-found/file-not-found.component';
@@ -39,7 +38,7 @@ const sanphamRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [SanphamComponent,GiaodiensuaComponent],
+  declarations: [SanphamComponent],
   imports: [
     CommonModule,
     SharedModule, RouterModule.forChild(sanphamRoutes)

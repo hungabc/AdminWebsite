@@ -34,8 +34,8 @@
             <div class="col-sm-4 invoice-col">
                 <strong>Các đơn hàng hiện tại:</strong><br>
                 <div *ngFor="let dh of donhangs">
-                   Mã:[{{dh.madh}}]<br>
-                   Khách hàng:[{{dh.tenkh}}]<br>
+                   Mã: [{{dh.madh}}]<br>
+                   Khách hàng: [{{dh.tenkh}}]<br>
                 </div>
             </div>
         </div>
@@ -51,7 +51,6 @@
                             <th>Mã đơn hàng</th>
                             <th>Khách hàng</th>
                             <th>Ngày đặt hàng</th>
-                            <th>Tổng giá trị</th>
                             <th>Trạng thái</th>
                             <th><i class="glyphicon glyphicon-pencil"></i></th>
                             <th>Chi tiết</th> <th>Hủy đơn</th>
@@ -63,16 +62,15 @@
                         <td>{{dh.madh}}</td>
                         <td>{{dh.tenkh}}</td>
                         <td>{{dh.ngaydathang}}</td>
-                        <td>{{dh.gia}}</td>
                         <td>{{dh.tinhtrang}}</td>
                          <td *ngIf="dh.tinhtrang=='chưa xác nhận'"><a class="btn btn-success" (click)="thaydoitrangthai(dh.madh)">Xác nhận</a></td>
                          <td *ngIf="dh.tinhtrang=='đã xác nhận'"><a class="btn btn-success" (click)="thaydoitrangthai(dh.madh)">Đóng gói</a></td>
                          <td *ngIf="dh.tinhtrang=='đã đóng gói'"><a class="btn btn-success" (click)="thaydoitrangthai(dh.madh)">Giao hàng</a></td>
                          <td *ngIf="dh.tinhtrang=='đang giao hàng'"><a class="btn btn-success" (click)="thaydoitrangthai(dh.madh)">Xác nhận nhận hàng</a></td>
                          <td *ngIf="dh.tinhtrang=='đã nhận hàng'"><a class="btn btn-success" (click)="thaydoitrangthai(dh.madh)">Hoàn tất</a></td>
-                         <td *ngIf="dh.tinhtrang=='đã thanh toán'">Hoàn tất</td>
-                         <td *ngIf="dh.tinhtrang=='đã hủy đơn'">X</td>
-                         <td><a class="btn btn-primary">Xem</a></td>
+                         <td *ngIf="dh.tinhtrang=='đã thanh toán'"><i class="gg-check-o"></i></td>
+                         <td *ngIf="dh.tinhtrang=='đã hủy đơn'"><i class="gg-danger"></i></td>
+                         <td><a class="btn btn-primary" [routerLink]="['/don-hang/chi-tiet', dh.madh]">Xem</a></td>
                          <ng-container>
                          <td *ngIf="dh.tinhtrang!='đã thanh toán'||dh.tinhtrang!='đã hủy đơn'"><a class="btn btn-success" (click)="huydon(dh.madh)">Hủy đơn</a></td>
                          <td *ngIf="dh.tinhtrang=='đã thanh toán'||dh.tinhtrang=='đã hủy đơn'">Không thể hủy</td>

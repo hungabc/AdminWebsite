@@ -13,10 +13,8 @@ hoadon:any;
   }
 
   ngOnInit(): void {
-   
     this._api.get('/api/Hoadonban/get-all').takeUntil(this.unsubscribe).subscribe(res => {
       this.hoadon = res;
-   
       setTimeout(() => {
         this.loadScripts();
       });

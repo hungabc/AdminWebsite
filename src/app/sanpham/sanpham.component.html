@@ -16,8 +16,8 @@
                                     <th>Tên </th>
                                     <th>Code</th>
                                     <th>Hình Ảnh</th>   
-                                    <th>Số Lượng</th>
-                                    <th>Giá</th>
+                                    <th><span style="float:right" >Số lượng</span></th>
+                                    <th ><span style="float:right" > Giá</span></th>
                                     <th>Edit</th>
                                     <th>Delete</th>
                                 </tr>
@@ -32,7 +32,7 @@
                                         <td><img src="assets/images/hinhanh/Products/{{spp.hinh}}" height="80" width="80"></td>
                                         <td ><span style="float:right" >{{spp.soluongton}}</span></td>
                                         <td><span style="float:right" >{{spp.gia | currency:'VND'}}</span></td>
-                                        <td><a class="btn btn-success" ><i class="glyphicon glyphicon-pencil"></i></a></td>
+                                        <td><a class="btn btn-success"  (click)="openUpdateModal(spp)" ><i class="glyphicon glyphicon-pencil"></i></a></td>
                                         <td><a class="btn btn-danger" (click)="onDelete(spp)" ><i class="glyphicon glyphicon-trash"></i></a></td>
                                     </tr>
                                 </ng-container>
@@ -257,7 +257,8 @@ masp:value.masp,
                                     <label  class=" control-label"> Ảnh:</label>
                                     <p-fileUpload #file_image mode="advanced"  [showUploadButton]="false" cancelLabel="Hủy" chooseLabel ="Chọn ảnh"   multiple="false" accept="image/*" maxFileSize="1000000">
                                         <ng-template pTemplate="content">
-                                            <img *ngIf="item && item.hinh" style="height: 100px;width: 100px;" [src]="item.hinh">
+                                            <img *ngIf="item && item.hinh&& isCreate" style="height: 100px;width: 100px;" [src]="item.hinh">
+                                            <img *ngIf="item && item.hinh &&!isCreate" style="height: 100px;width: 100px;" src="assets/images/hinhanh/Products/{{item.hinh}}">
                                         </ng-template>
                                   </p-fileUpload>
                                 </td>

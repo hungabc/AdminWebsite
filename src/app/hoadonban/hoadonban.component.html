@@ -9,7 +9,6 @@
             <div class="col-xs-12">
                 <h2 class="page-header">
                     <i class="fa fa-globe"></i> Website Đồ Gỗ Nội Thất!
-                    <small class="pull-right">Update Phiên bản:New</small>
                 </h2>
             </div>
         </div>
@@ -17,19 +16,26 @@
             <div class="col-sm-4 invoice-col">
                 Thông tin website:
                 <address>
-                    <strong>Đồ Gỗ Nội Thất</strong><br>
+                    <strong>#Đồ Gỗ Nội Thất</strong><br>
                     Phone: 0979-349-831<br>
                     Email: Websitedogonoithat@gmail.com
                 </address>
             </div>
             <div class="col-sm-4 invoice-col">
                 <address>
-                    <strong>Công ty đồ gỗ nội thất:</strong><br>
-                    CNC Interior: Quận Bình Thạnh, Tp. Hồ Chí Minh<br>
-                    Gỗ Việt     : Phường Tân Thới Hòa, Quận Tân Phú, TP.HCM<br>
-                    WOODPRO     : Thị Trấn Đông Anh, Đông Anh, Hà Nội<br>
-                    2N FURNITURE: P. Biên Hòa, Đồng Nai<br>
+                    <strong>Công ty đồ gỗ nội thất liên kết:</strong><br>
+                    + Công Ty TNHH Kiến Hưng<br>
+                    + Công Ty Cổ Phần Xây Dựng & Nội Thất Hoàn Cầu<br>
+                    + Công Ty CP Đầu Tư Và XNK Tân Huy Hoàng<br>
+                    + Công Ty Cổ Phần Nội Thất Đức Khang<br>
+                    + CTCP Kiến trúc nội thất Mộc Đạt<br>
                 </address>
+            </div>
+            <div class="col-sm-4 invoice-col">
+                <strong>Các đơn hàng hiện tại:</strong><br>
+                <div *ngFor="let dh of hoadon">
+                   Mã hóa đơn : [{{dh.madh}}]<br>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -40,17 +46,14 @@
                             <th>Mã hóa đơn bán</th>
                             <th>Mã đơn hàng</th>
                             <th>Ngày lập</th>
-                            <th>tổng giá trị</th>
                             <th>Xem chi tiết</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let hd of hoadon">
                             <td>{{hd.mahdb}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{hd.madh}}</td>
+                            <td>{{hd.ngaylap}}</td>
                             <td><a class="btn btn-success" href=""><i class="glyphicon glyphicon-eye-open"></i></a></td>
                         </tr>
                     </tbody>

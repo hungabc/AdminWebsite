@@ -68,15 +68,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
+                        <tr  *ngFor="let hd of chitiet">
+                            <td>{{hd.mahd}}</td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                         </tr>
-                        <tr><td colspan='5'> Tổng tiền hàng: <b></b></td></tr>
+                        <!-- <tr><td colspan='5'> Tổng tiền hàng: <b></b></td></tr> -->
                     </tbody>
                 </table>
             </div>

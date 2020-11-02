@@ -9,8 +9,6 @@ import { LoaisanphamComponent } from './loaisanpham/loaisanpham.component';
 import { KhachhangComponent } from './khachhang/khachhang.component';
 
 import { NccComponent } from './ncc/ncc.component';
-
-import { GiaodiensuaComponent } from './sanpham/giaodiensua/giaodiensua.component';
 import { JwtInterceptor } from './lib/jwt.interceptor'; 
 import { ErrorInterceptor } from './lib/error.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -21,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
-    
     DautrangComponent,
     CuoitrangComponent,
     LoaisanphamComponent,

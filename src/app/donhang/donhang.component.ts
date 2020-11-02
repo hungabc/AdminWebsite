@@ -33,6 +33,7 @@ dstt:any;
       this.tg = res;
       this.donhangs=this.tg.data;
       this.total=this.tg.totalItems;
+      console.log(this.donhangs);
       setTimeout(() => {
         this.loadScripts();
       });
@@ -45,6 +46,7 @@ dstt:any;
       this.tg = res;
       this.donhangs=this.tg.data;
       this.total=this.tg.totalItems;
+      console.log(this.donhangs);
     
     }); 
    
@@ -55,6 +57,7 @@ dstt:any;
       this.tg = res;
       this.donhangs=this.tg.data;
       this.total=this.tg.totalItems;
+      console.log(this.donhangs);
     
     }); 
   }

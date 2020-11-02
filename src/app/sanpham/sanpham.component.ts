@@ -35,7 +35,7 @@ submitted = false;
   ngOnInit(): void {
     this.allloai=[];
     this.page=1;
-    this.pageSize=4;
+    this.pageSize=3;
   this.totalItems=0;
     this._route.params.subscribe(params => {
       this._api.post('/api/SanPham/sp-phan-trang', { page: this.page, pageSize: this.pageSize}).takeUntil(this.unsubscribe).subscribe(res => {
@@ -71,13 +71,13 @@ submitted = false;
            hinh:data_image,
             macode: value.macode,
             tensp: value.tensp,
-            gia: value.gia,
-            magiamgia: value.magiamgia,
-            soluongton: value.soluong,
+            gia: Number.parseInt(value.gia),
+            magiamgia: Number.parseInt(value.magiamgia),
+            soluongton: Number.parseInt(value.soluong),
             ngaynhap: value.ngaynhap,
             mota: value.mota,
-            anhien:value.anhien,
-            maloai:value.maloai        
+            anhien:Number.parseInt(value.anhien),
+            maloai:Number.parseInt(value.maloai)
           };
         this._api.post('/api/SanPham/them-SP',tmp).takeUntil(this.unsubscribe).subscribe(res => {
           console.log(res);
@@ -89,16 +89,16 @@ submitted = false;
       this.getEncodeFromImage(this.file_image).subscribe((data: any): void => {
         let data_image = data == '' ? null : data;
         let tmp = {
-           hinh:data_image,
-           macode: value.macode,
-           tensp: value.tensp,
-           gia: value.gia,
-           magiamgia: value.magiamgia,
-           soluongton: value.soluong,
-           ngaynhap: value.ngaynhap,
-           mota: value.mota,
-           anhien:value.anhien,
-           maloai:value.maloai  ,
+          hinh:data_image,
+            macode: value.macode,
+            tensp: value.tensp,
+            gia: Number.parseInt(value.gia),
+            magiamgia: Number.parseInt(value.magiamgia),
+            soluongton: Number.parseInt(value.soluong),
+            ngaynhap: value.ngaynhap,
+            mota: value.mota,
+            anhien:Number.parseInt(value.anhien),
+            maloai:Number.parseInt(value.maloai),
            masp:this.item.masp,          
           };
         this._api.post('/api/SanPham/update-SP',tmp).takeUntil(this.unsubscribe).subscribe(res => {
@@ -162,16 +162,16 @@ submitted = false;
     this.isCreate = false;
     setTimeout(() => {
       $('#sanphamModal').modal('toggle');
-      this._api.get('/api/SanPham/'+ row.masp).takeUntil(this.unsubscribe).subscribe((res:any) => {
+      this._api.get('/api/SanPham/gettheomasp/'+ row.masp).takeUntil(this.unsubscribe).subscribe((res:any) => {
         this.item = res; 
-        let ngaynhap = new Date(this.item.ngaysinh);
+        let ngaynhap = new Date(this.item.ngaynhap);
           this.formdata = this.fb.group({
             // 'masp':[this.item.masp, Validators.required],
             'macode': [this.item.macode, Validators.required],
             'tensp': [this.item.tensp, Validators.required],
             'gia': [this.item.gia,Validators.required],
             'magiamgia': [this.item.magiamgia],
-            'soluong': [this.item.soluong, Validators.required],
+            'soluong': [this.item.soluongton, Validators.required],
             'ngaynhap': [ngaynhap, Validators.required],
             'mota': [this.item.mota],
             'anhien':[this.item.anhien],
