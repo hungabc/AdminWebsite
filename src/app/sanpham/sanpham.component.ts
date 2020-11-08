@@ -102,6 +102,7 @@ submitted = false;
            masp:this.item.masp,          
           };
         this._api.post('/api/SanPham/update-SP',tmp).takeUntil(this.unsubscribe).subscribe(res => {
+          debugger;
           alert('Cập nhật thành công');
           this.closeModal();
           });
