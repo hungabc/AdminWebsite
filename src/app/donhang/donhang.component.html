@@ -70,7 +70,7 @@
                          <td *ngIf="dh.tinhtrang=='đã nhận hàng'"><a class="btn btn-success" (click)="thaydoitrangthai(dh.madh)">Hoàn tất</a></td>
                          <td *ngIf="dh.tinhtrang=='đã thanh toán'"><i class="gg-check-o"></i></td>
                          <td *ngIf="dh.tinhtrang=='đã hủy đơn'"><i class="gg-danger"></i></td>
-                         <td><a class="btn btn-primary" [routerLink]="['/don-hang/chi-tiet', dh.madh]">Xem</a></td>
+                         <td><a class="btn btn-primary" (click)="getByID(dh.madh)">Xem</a></td>
                          <ng-container>
                          <td *ngIf="dh.tinhtrang!='đã thanh toán'||dh.tinhtrang!='đã hủy đơn'"><a class="btn btn-success" (click)="huydon(dh.madh)">Hủy đơn</a></td>
                          <td *ngIf="dh.tinhtrang=='đã thanh toán'||dh.tinhtrang=='đã hủy đơn'">Không thể hủy</td>
@@ -96,4 +96,115 @@
         </div>
     </section>
     <div class="clearfix"></div>
+</div>
+<div   id="chitietModal" *ngIf="donhang" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                  <h4 class="modal-title">Chi tiết đơn hàng</h4>
+        
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+            <form id="demo-form2"  [formGroup]="formdata"  class="form-horizontal form-label-left ">
+                  
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td> <label  class=" control-label"> Mã đơn:</label><input readonly style="cursor:not-allowed" type="text" formControlName="madh" placeholder="mã code" class="form-control" >
+                         
+                                </td>
+                                <td><label  class=" control-label"> tên đăng nhập:</label><input type="text" formControlName="tendangnhap"  class="form-control">
+                                  <div *ngIf="submitted && f.tendangnhap.errors" class="invalid-feedback">
+                                    <div *ngIf="f.tendangnhap.errors.required">tên sản phẩm là bắt buộc</div>
+                                  </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label  class=" control-label"> Ngày đặt:</label>
+                                    <input type="text" readonly class="form-control" formControlName="ngaydathang">
+                                    <div *ngIf="submitted && f.ngaynhap.errors" class="invalid-feedback">
+                                      <div *ngIf="f.ngaynhap.errors.required">Ngày nhập là bắt buộc</div>
+                                    </div>
+                                </td>
+                                <td><label  class=" control-label"> Ngày yêu cầu:</label>
+                                    <input type="date" class="form-control" formControlName="ngayyeucau" value="{{donhang.ngayyeucau}}">
+                                    <div *ngIf="submitted && f.ngayyeucau.errors" class="invalid-feedback">
+                                      <div *ngIf="f.ngayyeucau.errors.required">Ngày nhập là bắt buộc</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label  class=" control-label"> khách hàng:</label><input type="text" formControlName="tenkhachang" class="form-control">
+                                    <div *ngIf="submitted && f.tenkhachang.errors" class="invalid-feedback">
+                                          <div *ngIf="f.tenkhachang.errors.required">Ngày nhập là bắt buộc</div>
+                                        </div>
+                                </td>
+                                <td>
+                                    <label  class=" control-label">địa chỉ:</label><input type="text" formControlName="diachinguoinhan" class="form-control">
+                                    <div *ngIf="submitted && f.diachinguoinhan.errors" class="invalid-feedback">
+                                          <div *ngIf="f.diachinguoinhan.errors.required">Ngày nhập là bắt buộc</div>
+                                        </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label  class=" control-label"> email:</label><input type="text" formControlName="email" class="form-control">
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                          <div *ngIf="f.email.errors.required">Ngày nhập là bắt buộc</div>
+                                        </div>
+                                </td>
+                                <td>
+                                    <label  class=" control-label">sđt:</label><input type="text" formControlName="sdt" class="form-control">
+                                    <div *ngIf="submitted && f.sdt.errors" class="invalid-feedback">
+                                          <div *ngIf="f.sdt.errors.required">Ngày nhập là bắt buộc</div>
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <label for="">Danh sách sản phẩm</label>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Sản phẩm</th>
+                                <th><span style="float: right;">Số lượng</span></th>
+                                <th><span style="float: right;">Đơn giá</span></th>
+                                <th><span style="float: right;">Thành tiền</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of donhang.chitiet">
+                                <td>{{donhang.chitiet.indexOf(item)+1}}</td>
+                                <td>{{item.tensp}}</td>
+                                <td><span style="float: right;">{{item.soluong}}</span></td>
+                                <td><span style="float: right;">{{item.gia|currency:'VND'}}</span></td>
+                                <td><span style="float: right;">{{item.soluong*item.gia|currency:'VND'}}</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                            <td><label for="">Tổng cộng</label></td>
+                            <td><label style="float: right;">{{totalUnit}}</label></td>
+                            <td></td>
+                            <td><label style="float: right;">{{totalPrice|currency:'VND'}}</label></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                    <div class="form-group modal-footer">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button type="submit" class="btn btn-success btn-sm btn-submit">Lưu</button>
+                            <button class="btn btn-primary" type="reset">Làm mới</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

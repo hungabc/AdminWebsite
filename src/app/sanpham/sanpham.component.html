@@ -257,8 +257,8 @@ masp:value.masp,
                                     <label  class=" control-label"> Ảnh:</label>
                                     <p-fileUpload #file_image mode="advanced"  [showUploadButton]="false" cancelLabel="Hủy" chooseLabel ="Chọn ảnh"   multiple="false" accept="image/*" maxFileSize="1000000">
                                         <ng-template pTemplate="content">
-                                            <img *ngIf="item && item.hinh&& isCreate" style="height: 100px;width: 100px;" [src]="item.hinh">
-                                            <img *ngIf="item && item.hinh &&!isCreate" style="height: 100px;width: 100px;" src="assets/images/hinhanh/Products/{{item.hinh}}">
+                                            <img *ngIf="item && item.hinh && isCreate" style="height: 100px;width: 100px;" [src]="item.hinh">
+                                            <img *ngIf="item && item.hinh &&! isCreate" style="height: 100px;width: 100px;" src="assets/images/hinhanh/Products/{{item.hinh}}">
                                         </ng-template>
                                   </p-fileUpload>
                                 </td>
