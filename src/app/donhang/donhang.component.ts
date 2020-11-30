@@ -36,7 +36,7 @@ public submitted=false;
       {name:"đã thanh toán"},
       {name:"đã hủy đơn"}
     ]
-    this.index=1,this.size=12;this.total=0;
+    this.index=1,this.size=2;this.total=0;
     this._api.get('/api/Donhang/get-all/'+this.index+'/'+this.size).takeUntil(this.unsubscribe).subscribe(res => {
       this.tg = res;
       this.donhangs=this.tg.data;
@@ -49,7 +49,7 @@ public submitted=false;
    
   }
   reload(){
-    this.index=1,this.size=12;this.total=0;
+    this.index=1,this.size=2;this.total=0;
     this._api.get('/api/Donhang/get-all/'+this.index+'/'+this.size).takeUntil(this.unsubscribe).subscribe(res => {
       this.tg = res;
       this.donhangs=this.tg.data;
@@ -60,7 +60,7 @@ public submitted=false;
    
   }
   loadPage(page){
-    this.index=1,this.size=12;this.total=0;
+    this.index=1,this.size=2;this.total=0;
     this._api.get('/api/Donhang/get-all/'+page+'/'+this.size).takeUntil(this.unsubscribe).subscribe(res => {
       this.tg = res;
       this.donhangs=this.tg.data;
