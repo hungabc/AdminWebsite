@@ -70,7 +70,7 @@ public submitted=false;
     }); 
   }
   getbytt(trangthai){
-    this.index=1;this.size=1000;this.total=0;
+    this.index=1;this.size=2;this.total=0;
     if(trangthai=='all') this.reload();
     else {
       this._api.get('/api/Donhang/get-all/'+this.index+'/'+this.size+'/'+trangthai).takeUntil(this.unsubscribe).subscribe(res => {
